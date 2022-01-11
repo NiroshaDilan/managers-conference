@@ -1,0 +1,42 @@
+.header{
+    /*overflow: hidden;*/
+    width: 100%;
+}
+.top-title {
+    font-family: century gothic;
+    font-size: x-large;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+.page-titles{
+    padding: 1%;
+    background-image: linear-gradient(to right,#178cec, #ffffff);
+    width: 100%;
+    text-align: left;
+    top:0;
+    right:0;
+}
+.pgtitle{
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    color: white;
+    text-align: left;
+    padding-left: 1%;
+    margin-top: 5px;
+}
+
+.logo{
+    float: right;
+}
+
+.qa-img {
+    float: left;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="page-titles"] {
+        padding: 5%;
+        background-image: linear-gradient(#ffffff,#178cec);
+    }
+}

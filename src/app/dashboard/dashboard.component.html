@@ -1,0 +1,90 @@
+<div style="height: 100vh;">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h3 class="card-title">Message Approval</h3>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                </div>
+<!--                <mat-divider></mat-divider>-->
+                <div class="row table-container">
+                    <div class="col-md-12">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 uploaded-table">
+<!--                            &lt;!&ndash; Position Column &ndash;&gt;-->
+<!--                            <ng-container matColumnDef="position">-->
+<!--                                <th mat-header-cell *matHeaderCellDef> No.</th>-->
+<!--                                <td mat-cell *matCellDef="let element"> {{element.position}} </td>-->
+<!--                            </ng-container>-->
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="detail">
+                                <th mat-header-cell *matHeaderCellDef>Details/(Phone No/Branch)</th>
+                                <td mat-cell *matCellDef="let element"> {{element.detail}} </td>
+                            </ng-container>
+
+                            <!-- Type Column -->
+                            <ng-container matColumnDef="message">
+                                <th mat-header-cell *matHeaderCellDef>Message</th>
+                                <td mat-cell *matCellDef="let element"> {{element.message}} </td>
+                            </ng-container>
+
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef> Action</th>
+                                <td mat-cell *matCellDef="let element">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-sm btn-warning btn-ap">View</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group" style="margin: 0;" dropdown>
+                                                <button type="button" class="btn btn-sm btn-danger">Action</button>
+                                                <button id="button-split" type="button"
+                                                        dropdownToggle class="btn btn-sm btn-danger dropdown-toggle dropdown-toggle-split"
+                                                        aria-controls="dropdown-split">
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only visually-hidden">Split button!</span>
+                                                </button>
+                                                <ul id="dropdown-split" *dropdownMenu class="dropdown-menu"
+                                                    role="menu" aria-labelledby="button-split">
+                                                    <li role="menuitem"><a class="dropdown-item" href="#">High</a></li>
+                                                    <li role="menuitem"><a class="dropdown-item" href="#">Medium</a>
+                                                    </li>
+                                                    <li role="menuitem"><a class="dropdown-item" href="#">Low</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-sm btn-info btn-ap">Approve</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-sm btn-info btn-ap">Reject</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row
+                                *matRowDef="let row;
+                                columns: displayedColumns;"
+                                style="height: 150px;"></tr>
+                        </table>
+
+                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

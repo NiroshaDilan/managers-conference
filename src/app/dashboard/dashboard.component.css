@@ -1,0 +1,38 @@
+/*table styles start here*/
+.uploaded-table {
+    width: 100%;
+}
+
+.mat-header-cell {
+    font-weight: bold;
+}
+
+.mat-column-detail {
+    width: 150px;
+    text-align: center;
+}
+
+.mat-column-message {
+    width: 300px;
+    text-align: center;
+}
+
+.mat-column-action {
+    width: 100px;
+    text-align: center;
+}
+.table-container {
+    overflow: auto;
+    height: 550px;
+    max-width: 100%;
+}
+.btn-ap {
+    width: 127px;
+}
+/*.card-header {*/
+/*    !*background-color: #c2dfef;*!*/
+/*    !*background: linear-gradient(*!*/
+/*    !*        265deg, #ef5350, #e53935);*!*/
+/*}*/
+
+/*table styles end here*/
