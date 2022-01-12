@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header card-header-danger">
-                <h3 class="card-title">Message Approval</h3>
+                <h3 class="card-title">Approved Messages</h3>
             </div>
 
             <div class="card-body">
@@ -33,40 +33,33 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <button type="button"
-                                                    (click)="viewMessage(modalTemplate)"
                                                     class="btn btn-sm btn-warning btn-ap">View</button>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-<!--                                            <div class="btn-group btn-dw-group" style="margin: 0;" dropdown>-->
-<!--                                                <button type="button" class="btn btn-sm btn-danger">{{this.priority}}</button>-->
-<!--                                                <button id="button-split" type="button"-->
-<!--                                                        dropdownToggle class="btn btn-sm btn-danger dropdown-toggle dropdown-toggle-split"-->
-<!--                                                        aria-controls="dropdown-split">-->
-<!--                                                    <span class="caret"></span>-->
-<!--                                                    <span class="sr-only visually-hidden">Split button!</span>-->
-<!--                                                </button>-->
-<!--                                                <ul id="dropdown-split" *dropdownMenu class="dropdown-menu"-->
-<!--                                                    (click)="dropdownOnClick($event)"-->
-<!--                                                    role="menu" aria-labelledby="button-split">-->
-<!--                                                    <li role="menuitem" value="High"><a class="dropdown-item">High</a></li>-->
-<!--                                                    <li role="menuitem" value="Medium"><a class="dropdown-item">Medium</a>-->
-<!--                                                    </li>-->
-<!--                                                    <li role="menuitem" value="Low"><a class="dropdown-item">Low</a></li>-->
-<!--                                                </ul>-->
-<!--                                            </div>-->
-                                            <ng-select [allowClear]="true"
-                                                       [items]="items"
-                                                       (selected)="selected($event)"
-                                                       placeholder="No city selected">
-                                            </ng-select>
+                                            <div class="btn-group" style="margin: 0;" dropdown>
+                                                <button type="button" class="btn btn-sm btn-danger">Action</button>
+                                                <button id="button-split" type="button"
+                                                        dropdownToggle class="btn btn-sm btn-danger dropdown-toggle dropdown-toggle-split"
+                                                        aria-controls="dropdown-split">
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only visually-hidden">Split button!</span>
+                                                </button>
+                                                <ul id="dropdown-split" *dropdownMenu class="dropdown-menu"
+                                                    role="menu" aria-labelledby="button-split">
+                                                    <li role="menuitem"><a class="dropdown-item" href="#">High</a></li>
+                                                    <li role="menuitem"><a class="dropdown-item" href="#">Medium</a>
+                                                    </li>
+                                                    <li role="menuitem"><a class="dropdown-item" href="#">Low</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <button type="button"
-                                                    class="btn btn-sm btn-default btn-ap">Approve</button>
+                                                    class="btn btn-sm btn-accent btn-ap">Approve</button>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -82,7 +75,7 @@
                             <tr mat-row
                                 *matRowDef="let row;
                                 columns: displayedColumns;"
-                                style="height: 250px;"></tr>
+                                style="height: 150px;"></tr>
                         </table>
 
                         <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
@@ -92,6 +85,3 @@
         </div>
     </div>
 </div>
-<ng-template #modalTemplate>
-    <app-message-modal [dataFromParent]="modalRef"></app-message-modal>
-</ng-template>

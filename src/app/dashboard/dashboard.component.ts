@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import * as Chartist from 'chartist';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {RecentUploadedModel} from '../shared/models/recent-uploaded-model';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 const ELEMENT_DATA: RecentUploadedModel[] = [
     {detail: '071123456789/Kandy Branch', message: 'Now you can browse privately, ' +
@@ -21,18 +22,40 @@ const ELEMENT_DATA: RecentUploadedModel[] = [
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
 
+    public items: Array<string> = ['High', 'Medium', 'Low'];
+
     displayedColumns: string[] = ['detail', 'message', 'action'];
     dataSource = new MatTableDataSource<RecentUploadedModel>(ELEMENT_DATA);
+    priority  = 'Priority';
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    public modalRef: BsModalRef;
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
     }
 
-    constructor() { }
+    constructor(private modalService: BsModalService) { }
 
     ngOnInit(): void {
     }
 
+    public selected(value: any): void {
+        console.log('Selected value is: ', value);
+    }
+
+    viewMessage(modalTemplate: TemplateRef<any>) {
+        this.modalRef = this.modalService.show(modalTemplate,
+            {
+                class: 'modal-dialogue-centered modal-md',
+                backdrop: 'static',
+                keyboard: true
+            }
+        );
+    }
+
+    dropdownOnClick(selectedPriority: any) {
+        this.priority = selectedPriority.target.innerHTML;
+        console.log(selectedPriority.target.innerHTML);
+    }
 }

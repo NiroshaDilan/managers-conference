@@ -10,6 +10,9 @@ import {ComponentsModule} from './components/components.module';
 
 import {AppComponent} from './app.component';
 import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
+import { ApprovedComponent } from './approved/approved.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -19,11 +22,14 @@ import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.componen
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    ApprovedComponent,
 
   ],
   providers: [],
