@@ -22,10 +22,12 @@ import {MatTableModule} from '@angular/material/table';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {SharedModule} from '../../shared/shared.module';
+import {SelectDropDownModule} from 'ngx-select-dropdown';
 
 @NgModule({
     imports: [
         CommonModule,
+        SelectDropDownModule,
         BsDropdownModule.forRoot(),
         ModalModule.forRoot(),
         RouterModule.forChild(AdminLayoutRoutes),

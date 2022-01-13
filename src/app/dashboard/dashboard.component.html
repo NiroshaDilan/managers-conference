@@ -1,7 +1,7 @@
 <div style="height: 100vh;">
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header card-header-danger">
+            <div class="card-header card-header-info">
                 <h3 class="card-title">Message Approval</h3>
             </div>
 
@@ -29,7 +29,8 @@
                             <!-- Symbol Column -->
                             <ng-container matColumnDef="action">
                                 <th mat-header-cell *matHeaderCellDef> Action</th>
-                                <td mat-cell *matCellDef="let element">
+                                <td mat-cell *matCellDef="let element"
+                                    style="overflow: inherit;">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <button type="button"
@@ -38,11 +39,14 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
-<!--                                            <div class="btn-group btn-dw-group" style="margin: 0;" dropdown>-->
-<!--                                                <button type="button" class="btn btn-sm btn-danger">{{this.priority}}</button>-->
+                                        <div class="col-md-6 offset-md-3">
+<!--                                            <div class="btn-group btn-dw-group"-->
+<!--                                                 style="margin: 0;" dropdown>-->
+<!--                                                <button type="button"-->
+<!--                                                        class="btn btn-sm btn-danger">{{this.priority}}</button>-->
 <!--                                                <button id="button-split" type="button"-->
-<!--                                                        dropdownToggle class="btn btn-sm btn-danger dropdown-toggle dropdown-toggle-split"-->
+<!--                                                        dropdownToggle-->
+<!--                                                        class="btn btn-sm btn-danger dropdown-toggle dropdown-toggle-split"-->
 <!--                                                        aria-controls="dropdown-split">-->
 <!--                                                    <span class="caret"></span>-->
 <!--                                                    <span class="sr-only visually-hidden">Split button!</span>-->
@@ -56,17 +60,39 @@
 <!--                                                    <li role="menuitem" value="Low"><a class="dropdown-item">Low</a></li>-->
 <!--                                                </ul>-->
 <!--                                            </div>-->
-                                            <ng-select [allowClear]="true"
-                                                       [items]="items"
-                                                       (selected)="selected($event)"
-                                                       placeholder="No city selected">
-                                            </ng-select>
+<!--                                            <select formControlName="website" class="form-control">-->
+<!--                                                <option disabled>Select Website</option>-->
+<!--                                                <option>Choose Website</option>-->
+<!--                                                <option>High</option>-->
+<!--                                                <option>Low</option>-->
+<!--                                            </select>-->
+
+<!--                                            <select class="form-control">-->
+<!--                                                <option selected>Open this select menu</option>-->
+<!--                                                <option value="1">One</option>-->
+<!--                                                <option value="2">Two</option>-->
+<!--                                                <option value="3">Three</option>-->
+<!--                                            </select>-->
+<!--                                            <mat-form-field appearance="standard" style="text-align: center;">-->
+<!--                                                <mat-label>Select Priority</mat-label>-->
+<!--                                                <mat-select  class="form-control-small" value="{{element}}">-->
+<!--                                                    <mat-option value="option1">High</mat-option>-->
+<!--                                                    <mat-option value="option2">Medium</mat-option>-->
+<!--                                                    <mat-option value="option3">Low</mat-option>-->
+<!--                                                </mat-select>-->
+<!--                                            </mat-form-field>-->
+                                            <ngx-select-dropdown [multiple]="false"
+                                            (change)="priorityOnChange($event)"
+                                                                 [config]="config"
+                                                                 [options]="priorityOptions">
+
+                                            </ngx-select-dropdown>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <button type="button"
-                                                    class="btn btn-sm btn-default btn-ap">Approve</button>
+                                                    class="btn btn-sm btn-success btn-ap">Approve</button>
                                         </div>
                                     </div>
                                     <div class="row">

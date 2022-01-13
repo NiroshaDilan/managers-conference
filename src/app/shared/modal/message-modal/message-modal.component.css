@@ -1,0 +1,22 @@
+.modal-header {
+    background-color: #c2dfef;
+    font-size: 17px;
+    font-weight: 500;
+    color: white;
+}
+label {
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+    font-family: monospace;
+}
+
+span {
+    text-align: justify;
+    font-weight: 400;
+    font-family: monospace;
+}
+.message-container {
+    height: 300px;
+    overflow: auto;
+}

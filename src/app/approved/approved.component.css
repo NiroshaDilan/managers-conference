@@ -10,16 +10,24 @@
 .mat-column-detail {
     width: 150px;
     text-align: center;
+    border-right: 1px solid rgba(0,0,0,.12);
 }
 
 .mat-column-message {
     width: 300px;
     text-align: center;
+    border-right: 1px solid rgba(0,0,0,.12);
 }
 
-.mat-column-action {
+.mat-column-message, td {
+    text-align: justify;
+    padding: 10px 10px 10px 10px;
+}
+
+.mat-column-sequence {
     width: 100px;
     text-align: center;
+    border-right: 1px solid rgba(0,0,0,.12);
 }
 .table-container {
     overflow: auto;
@@ -29,10 +37,9 @@
 .btn-ap {
     width: 127px;
 }
-/*.card-header {*/
-/*    !*background-color: #c2dfef;*!*/
-/*    !*background: linear-gradient(*!*/
-/*    !*        265deg, #ef5350, #e53935);*!*/
-/*}*/
-
-/*table styles end here*/
+table, th {
+    font-size: 15px;
+}
+.page-container {
+    margin-top: 30px;
+}

@@ -13,19 +13,25 @@ import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.componen
 import { ApprovedComponent } from './approved/approved.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {SelectDropDownModule} from 'ngx-select-dropdown';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ComponentsModule,
-    RouterModule,
-    AppRoutingModule,
-    MatPaginatorModule,
-    MatTableModule
-  ],
+    imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        ComponentsModule,
+        RouterModule,
+        AppRoutingModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        SelectDropDownModule
+    ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,

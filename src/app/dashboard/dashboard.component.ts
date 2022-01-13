@@ -24,6 +24,18 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     public items: Array<string> = ['High', 'Medium', 'Low'];
 
+    priorityOptions = ['High', 'Medium', 'Low'];
+
+    config = {
+        displayKey: 'description',
+        height: 'auto',
+        placeholder: 'Priority',
+        customComparator: () => {},
+        limitTo: 0,
+        clearOnSelection: true,
+        inputDirection: 'ltr'
+    }
+
     displayedColumns: string[] = ['detail', 'message', 'action'];
     dataSource = new MatTableDataSource<RecentUploadedModel>(ELEMENT_DATA);
     priority  = 'Priority';
@@ -44,10 +56,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         console.log('Selected value is: ', value);
     }
 
+    priorityOnChange(priority: any) {
+        console.log(priority);
+    }
+
     viewMessage(modalTemplate: TemplateRef<any>) {
         this.modalRef = this.modalService.show(modalTemplate,
             {
-                class: 'modal-dialogue-centered modal-md',
+                class: 'modal-dialogue-centered modal-lg',
                 backdrop: 'static',
                 keyboard: true
             }
@@ -56,6 +72,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     dropdownOnClick(selectedPriority: any) {
         this.priority = selectedPriority.target.innerHTML;
-        console.log(selectedPriority.target.innerHTML);
+        console.log(selectedPriority);
     }
 }

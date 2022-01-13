@@ -1,18 +1,15 @@
 <div style="height: 100vh;">
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header card-header-danger">
+            <div class="card-header card-header-info">
                 <h3 class="card-title">Approved Messages</h3>
             </div>
 
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-3">
-                    </div>
-                </div>
                 <div class="row table-container">
                     <div class="col-md-12">
-                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 uploaded-table">
+                        <table mat-table [dataSource]="dataSource"
+                               class="mat-elevation-z8 uploaded-table">
 
                             <!-- Name Column -->
                             <ng-container matColumnDef="detail">
@@ -27,45 +24,51 @@
                             </ng-container>
 
                             <!-- Symbol Column -->
-                            <ng-container matColumnDef="action">
-                                <th mat-header-cell *matHeaderCellDef> Action</th>
-                                <td mat-cell *matCellDef="let element">
+                            <ng-container matColumnDef="sequence">
+                                <th mat-header-cell *matHeaderCellDef> Sequence</th>
+                                <td mat-cell *matCellDef="let element"
+                                    style="overflow: inherit;">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <button type="button"
-                                                    class="btn btn-sm btn-warning btn-ap">View</button>
+                                        <div class="col-md-8 offset-2">
+<!--                                            <mat-form-field appearance="standard" style="text-align: center;">-->
+<!--                                                <mat-label>Select Priority</mat-label>-->
+<!--                                                <mat-select class="form-control-small" value="{{element}}">-->
+<!--                                                    <mat-option *ngFor="let priority of priorities"-->
+<!--                                                                style="text-align: center;"-->
+<!--                                                                value="{{priority.id}}">-->
+<!--                                                        {{ priority.level }}-->
+<!--                                                    </mat-option>-->
+<!--                                                </mat-select>-->
+<!--                                            </mat-form-field>-->
+                                            <ngx-select-dropdown [multiple]="false"
+                                                                 (change)="priorityOnChange($event)"
+                                                                 [config]="priorityConfig"
+                                                                 [options]="priorityOptions">
+
+                                            </ngx-select-dropdown>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="btn-group" style="margin: 0;" dropdown>
-                                                <button type="button" class="btn btn-sm btn-danger">Action</button>
-                                                <button id="button-split" type="button"
-                                                        dropdownToggle class="btn btn-sm btn-danger dropdown-toggle dropdown-toggle-split"
-                                                        aria-controls="dropdown-split">
-                                                    <span class="caret"></span>
-                                                    <span class="sr-only visually-hidden">Split button!</span>
-                                                </button>
-                                                <ul id="dropdown-split" *dropdownMenu class="dropdown-menu"
-                                                    role="menu" aria-labelledby="button-split">
-                                                    <li role="menuitem"><a class="dropdown-item" href="#">High</a></li>
-                                                    <li role="menuitem"><a class="dropdown-item" href="#">Medium</a>
-                                                    </li>
-                                                    <li role="menuitem"><a class="dropdown-item" href="#">Low</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button type="button"
-                                                    class="btn btn-sm btn-accent btn-ap">Approve</button>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button type="button"
-                                                    class="btn btn-sm btn-danger btn-ap">Reject</button>
+                                        <div class="col-md-8 offset-2" style="margin-top: 10px;">
+<!--                                            <mat-form-field appearance="standard"-->
+<!--                                                            style="text-align: center;">-->
+<!--                                                <mat-label>Select Sequence</mat-label>-->
+<!--                                                <mat-select-->
+<!--                                                        class="form-control-small"-->
+<!--                                                        value="{{element}}">-->
+<!--                                                    <mat-option *ngFor="let sequence of sequences"-->
+<!--                                                                style="text-align: center;"-->
+<!--                                                                value="{{sequence.id}}">-->
+<!--                                                        {{ sequence.number }}-->
+<!--                                                    </mat-option>-->
+<!--                                                </mat-select>-->
+<!--                                            </mat-form-field>-->
+                                            <ngx-select-dropdown [multiple]="false"
+                                                                 (change)="sequenceOnChange($event)"
+                                                                 [config]="seqDropdownConfig"
+                                                                 [options]="sequenceOptions">
+
+                                            </ngx-select-dropdown>
                                         </div>
                                     </div>
                                 </td>
@@ -78,7 +81,17 @@
                                 style="height: 150px;"></tr>
                         </table>
 
-                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                        <div class="row page-container">
+                            <div class="col-md-6">
+                                <button type="button"
+                                        class="btn btn-sm btn-info btn-ap">Save
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                               showFirstLastButtons></mat-paginator>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
