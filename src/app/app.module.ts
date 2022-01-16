@@ -35,7 +35,7 @@ import {SelectDropDownModule} from 'ngx-select-dropdown';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    ApprovedComponent,
+    ApprovedComponent
 
   ],
   providers: [],
