@@ -3,6 +3,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DisplayService } from 'app/core/services/display.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { LocalService } from 'app/core/services/local.service';
 
 @Component({
   selector: 'display',
@@ -13,38 +14,101 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class DisplayComponent implements OnInit {
 
   modalRef?: BsModalRef;
-  // isClickedFirst: boolean = false;
-  // isClickedSecond: boolean = false;
   isDisabledprevious: boolean = false;
   isDisabledNext: boolean = false;
   messageList: any = new Array();
   question: any;
   answeredQuestion: any;
+  emptyQuestionObj = {
+    id: 0,
+    message: 'Approved Messages are completed',
+  }
 
   constructor(
     private modalService: BsModalService,
-    private displayService: DisplayService
+    private displayService: DisplayService,
+    private localService: LocalService
   ) {
   }
 
   ngOnInit(): void {
-    this.displayService.getQuestions().subscribe(res => {
-      let obj = {
-        id: res.id,
-        message: res.message,
-      }
-      // this.messageList.push(obj);
-      this.question = obj;
-    });
 
-    console.log('Initial Obj'+this.question);
+    this.answeredQuestion = JSON.parse(this.localService.getItem('AnsweredObj'));
 
-    //disable previous button if 
     if (!this.answeredQuestion) {
-      // this.isClickedFirst = true;
-      // this.isClickedSecond = false;
+      console.log('Empty Answered Question');
       this.isDisabledprevious = true;
+
+      this.displayService.getQuestions().subscribe(res => {
+
+        if (res) {
+          if (res.id != 0) {
+            let obj = {
+              id: res.id,
+              message: res.message,
+            }
+            this.question = obj;
+          } else {
+            this.question = this.emptyQuestionObj;
+            this.isDisabledNext = true;
+          }
+
+        } else {
+          console.log('ERROR');
+        }
+
+
+
+      },
+        (error: any) => {
+          if (error instanceof HttpErrorResponse) {
+            console.log(error);
+          }
+        });
+      console.log('Initial Obj' + this.question);
+
+    } else {
+      if (!this.answeredQuestion.checkedPrevious) {
+        console.log('Not Empty Answered Question and not previous clicked');
+        this.isDisabledprevious = false;
+
+        this.displayService.getQuestions().subscribe(res => {
+
+          if (res) {
+            if (res.id != 0) {
+              let obj = {
+                id: res.id,
+                message: res.message,
+              }
+              this.question = obj;
+            } else {
+              this.question = this.emptyQuestionObj;
+              this.isDisabledNext = true;
+            }
+
+          } else {
+            console.log('ERROR');
+          }
+
+        },
+          (error: any) => {
+            if (error instanceof HttpErrorResponse) {
+              console.log(error);
+            }
+          });
+        console.log('Initial Obj' + this.question);
+      } else {
+        console.log('Not Empty Answered Question and  previous clicked');
+        this.isDisabledprevious = true;
+        let obj = {
+          id: this.answeredQuestion.id,
+          message: this.answeredQuestion.message,
+        }
+        this.question = obj;
+      }
     }
+
+
 
   }
 
@@ -65,7 +129,8 @@ export class DisplayComponent implements OnInit {
     this.question = obj;
     //set true for the checked previous value
     this.answeredQuestion.checkedPrevious = true;
-
+    this.localService.setItem('AnsweredObj', JSON.stringify(this.answeredQuestion));
+    this.isDisabledNext = false;
   }
 
   showNextQuestion(id: String) {
@@ -91,20 +156,28 @@ export class DisplayComponent implements OnInit {
                 checkedPrevious: false,
               }
               this.answeredQuestion = objAnswered;
-              console.log('answered Question' +JSON.stringify(this.answeredQuestion));
+              this.localService.setItem('AnsweredObj', JSON.stringify(this.answeredQuestion));
+              console.log('answered Question' + JSON.stringify(this.answeredQuestion));
               //Get API
               this.displayService.getQuestions().subscribe(
                 (response: any) => {
                   console.log(response);
 
                   if (response) {
-                    let obj = {
-                      id: response.id,
-                      message: response.message,
+                    if (response.id != 0) {
+                      let obj = {
+                        id: response.id,
+                        message: response.message,
+                      }
+                      this.question = obj;
+                      console.log('question obj -----------' + JSON.stringify(this.question));
+                      this.isDisabledprevious = false;
+                    } else {
+                      this.question = this.emptyQuestionObj;
+                      this.isDisabledNext = true;
+                      this.isDisabledprevious = false;
                     }
-                    this.question = obj;
-                    console.log('question obj -----------'+JSON.stringify(this.question));
-                    this.isDisabledprevious = false;
+
                   } else {
                     console.log('ERROR');
                   }
@@ -150,6 +223,7 @@ export class DisplayComponent implements OnInit {
                   checkedPrevious: false,
                 }
                 this.answeredQuestion = objAnswered;
+                this.localService.setItem('AnsweredObj', JSON.stringify(this.answeredQuestion));
                 console.log('answered Question' + JSON.stringify(this.answeredQuestion));
                 //Get API
                 this.displayService.getQuestions().subscribe(
@@ -157,12 +231,20 @@ export class DisplayComponent implements OnInit {
                     console.log(response);
 
                     if (response) {
-                      let obj = {
-                        id: response.id,
-                        message: response.message,
+
+                      if (response.id != 0) {
+                        let obj = {
+                          id: response.id,
+                          message: response.message,
+                        }
+                        this.question = obj;
+                        this.isDisabledprevious = false;
+                      } else {
+                        this.question = this.emptyQuestionObj;
+                        this.isDisabledNext = true;
+                        this.isDisabledprevious = false;
                       }
-                      this.question = obj;
-                      this.isDisabledprevious = false;
+
                     } else {
                       console.log('ERROR');
                     }
@@ -196,13 +278,24 @@ export class DisplayComponent implements OnInit {
             console.log(res);
 
             if (res) {
-              let obj = {
-                id: res.id,
-                message: res.message,
+
+              if (res.id != 0) {
+                let obj = {
+                  id: res.id,
+                  message: res.message,
+                }
+                this.question = obj;
+                this.isDisabledprevious = false;
+                this.answeredQuestion.checkedPrevious = false;
+                this.localService.setItem('AnsweredObj', JSON.stringify(this.answeredQuestion));
+              } else {
+                this.question = this.emptyQuestionObj;
+                this.isDisabledNext = true;
+                this.isDisabledprevious = false;
+                this.answeredQuestion.checkedPrevious = false;
+                this.localService.setItem('AnsweredObj', JSON.stringify(this.answeredQuestion));
               }
-              this.question = obj;
-              this.isDisabledprevious = false;
-              this.answeredQuestion.checkedPrevious = false;
+
             } else {
               console.log('ERROR');
             }

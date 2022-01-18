@@ -87,6 +87,7 @@ html {
     padding: 10px;
     margin: 0 5px 24px;
     font-family: "Calibri, sans-serif";
+    text-align: justify;
 }
 
 .question-card-body {
