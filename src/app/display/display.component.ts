@@ -4,6 +4,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DisplayService } from 'app/core/services/display.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LocalService } from 'app/core/services/local.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'display',
@@ -27,12 +28,18 @@ export class DisplayComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private displayService: DisplayService,
-    private localService: LocalService
+    private localService: LocalService,
+    private spinner: NgxSpinnerService
   ) {
   }
 
   ngOnInit(): void {
 
+    // this.initDisplay();
+
+  }
+
+  initDisplay() {
     this.answeredQuestion = JSON.parse(this.localService.getItem('AnsweredObj'));
 
     if (!this.answeredQuestion) {
@@ -81,6 +88,7 @@ export class DisplayComponent implements OnInit {
                 message: res.message,
               }
               this.question = obj;
+              this.isDisabledNext = false;
             } else {
               this.question = this.emptyQuestionObj;
               this.isDisabledNext = true;
@@ -108,13 +116,23 @@ export class DisplayComponent implements OnInit {
       }
     }
 
-
-
   }
 
   openStartQuestionnaire(template: TemplateRef<any>) {
+
     this.modalRef = this.modalService.show(template);
-    console.log(this.question.message);
+    this.spinner.show();
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+      // console.log(this.question.message);
+      console.log('--------------------');
+      this.initDisplay();
+
+    }, 5000);
+
+
+
   }
 
   showPreviousQuestion() {

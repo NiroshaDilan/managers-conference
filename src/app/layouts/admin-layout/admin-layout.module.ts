@@ -18,6 +18,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {SelectDropDownModule} from 'ngx-select-dropdown';
 import { DisplayComponent } from 'app/display/display.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
     imports: [
@@ -37,7 +38,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         MatPaginatorModule,
         MatTableModule,
         SharedModule,
-        NgbModule
+        NgbModule,
+        NgxSpinnerModule
     ],
   declarations: [
     DashboardComponent,

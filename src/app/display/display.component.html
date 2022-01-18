@@ -61,7 +61,7 @@
                                 <div class='img-size'>
                                     <div class="card question-card">
                                         <div class="card-body question-card-body">
-                                            <p class="card-text question-font">{{question.message}}</p>
+                                            <p class="card-text question-font">{{question?.message}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -104,3 +104,6 @@
         </div>
     </div>
 </ng-template>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
