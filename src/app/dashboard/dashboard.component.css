@@ -7,7 +7,7 @@
     font-weight: bold;
 }
 
-.mat-column-detail {
+.mat-column-mobileNo {
     width: 150px;
     text-align: center;
     border-right: 1px solid rgba(0,0,0,.12);
@@ -19,7 +19,7 @@
     border-right: 1px solid rgba(0,0,0,.12);
 }
 .mat-column-message, td {
-    text-align: justify;
+    text-align: center;
     padding: 10px 10px 10px 10px;
 }
 
@@ -43,4 +43,8 @@
 
 table, th {
     font-size: 15px;
+}
+
+button.ngx-dropdown-button {
+    max-width: 127px;
 }
