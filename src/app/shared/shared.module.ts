@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MessageModalComponent } from './modal/message-modal/message-modal.component';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
     declarations: [
@@ -10,7 +11,8 @@ import { MessageModalComponent } from './modal/message-modal/message-modal.compo
         MessageModalComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        ModalModule
     ]
 })
 export class SharedModule { }
