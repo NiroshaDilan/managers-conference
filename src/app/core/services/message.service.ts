@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AppConfig} from '../../configs/app-config';
 import {Observable} from 'rxjs';
 import {MessageResponseModel} from '../../shared/models/message-response-model';
+import {PriorityRequestModel} from '../../shared/models/priority-request-model';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +19,11 @@ export class MessageService {
         return this.httpClient.post<any>(this.appConfig.API.LOAD_MESSAGES, params);
     }
 
-    getApprovedMessages(params): Observable<any> {
+    getApprovedMessages(page = 0, size = 3): Observable<any> {
+        const params = {
+            page: page,
+            size: size
+        }
         return this.httpClient.post(this.appConfig.API.LOAD_APPROVED, params);
     }
 
@@ -26,7 +31,8 @@ export class MessageService {
         return this.httpClient.post(this.appConfig.API.SAVE_APPROVED, params);
     }
 
-    saveApprovedPriority(params): Observable<any> {
+    saveApprovedPriority(params: PriorityRequestModel): Observable<any> {
+        console.log(params);
         return this.httpClient.post(this.appConfig.API.SAVE_PRIORITY, params);
     }
 }

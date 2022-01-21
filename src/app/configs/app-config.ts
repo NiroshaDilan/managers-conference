@@ -13,6 +13,6 @@ export class AppConfig {
     LOAD_MESSAGES: AppConfig.URL_APP_BASE + 'messages/retrieve',
     LOAD_APPROVED: AppConfig.URL_APP_BASE + 'approved/retrieve',
     SAVE_APPROVED: AppConfig.URL_APP_BASE + 'messages/persist/approved',
-    SAVE_PRIORITY: AppConfig.URL_APP_BASE + 'persist/priority'
+    SAVE_PRIORITY: AppConfig.URL_APP_BASE + 'approved/persist/priority'
   };
 }

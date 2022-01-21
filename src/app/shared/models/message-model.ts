@@ -5,4 +5,5 @@ export interface MessageModel {
     status: string;
     name: string;
     branch: string;
+    details: string;
 }

@@ -4,6 +4,8 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {MessageService} from '../../core/services/message.service';
 import {catchError, finalize} from 'rxjs/operators';
 import {MessageResponseModel} from '../models/message-response-model';
+import {ApprovedMsgResponseModel} from '../models/approved-msg-response-model';
+import {ApprovedMessageModel} from '../models/approved-message-model';
 
 export class MessageDatasource implements DataSource<MessageModel> {
 
@@ -33,9 +35,8 @@ export class MessageDatasource implements DataSource<MessageModel> {
                 finalize(() => this.loadingSubject.next(false))
             )
             .subscribe((result: MessageResponseModel) => {
-                    this.messageSubject.next(result.messageDetailsList);
-                this.countSubject.next(7); // todo need total elements
+                this.messageSubject.next(result.messageDetailsList);
+                this.countSubject.next(result.totalElements);
             });
     }
-
 }

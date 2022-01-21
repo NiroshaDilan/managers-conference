@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
-import {RecentUploadedModel} from '../shared/models/recent-uploaded-model';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {MessageService} from '../core/services/message.service';
 import {MessageDatasource} from '../shared/datasource/message-datasource';
@@ -10,20 +9,9 @@ import {MessageModel} from '../shared/models/message-model';
 import {MessageResponseModel} from '../shared/models/message-response-model';
 import {MessageModalComponent} from '../shared/modal/message-modal/message-modal.component';
 import {Priority} from '../shared/enum/priority';
-
-const ELEMENT_DATA: RecentUploadedModel[] = [
-    {
-        detail: '071123456789/Kandy Branch', message: 'Now you can browse privately, ' +
-            'and other people who use this device won’t see your activity. ' +
-            'However, downloads, bookmarks and reading list items will be saved.', frequency: 'cycle'
-    },
-    {
-        detail: '071123456789/Kandy Branch', message: 'Now you can browse privately, and other people who ' +
-            'use this device won’t see your activity. ' +
-            'However, downloads, bookmarks and reading list items will be saved.', frequency: 'cycle'
-    }
-];
-
+import {DisplayMessage} from '../shared/enum/display-message';
+import {NotificationsComponent} from '../shared/notifications/notifications.component';
+import {MessageBoxService} from '../core/services/message-box.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -36,7 +24,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     priority = 0;
     pageSize = 2;
     currentPage = 0;
-    pageSizeOptions: number[] = [5, 10, 25, 100];
+    pageSizeOptions: number[] = [2, 5, 10, 25, 100];
     messageDataSource: MessageDatasource;
     public items: Array<string> = ['High', 'Medium', 'Low'];
     priorityOptions = ['High', 'Medium', 'Low'];
@@ -54,13 +42,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         inputDirection: 'ltr'
     }
 
-    displayedColumns: string[] = ['mobileNo', 'message', 'action'];
+    displayedColumns: string[] = ['details', 'message', 'action'];
     dataSource: MatTableDataSource<MessageModel> = new MatTableDataSource();
 
     public modalRef: BsModalRef;
 
     constructor(private modalService: BsModalService,
-                private messageService: MessageService) {
+                private messageService: MessageService,
+                private notification: NotificationsComponent,
+                private messageBoxService: MessageBoxService) {
     }
 
     ngOnInit(): void {
@@ -89,6 +79,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     reject(element: MessageModel, priorityObj: any) {
         this.submit(element.id, 'REJECTED', priorityObj.selectedItems[0])
+
     }
 
     submit(messageId: number, status: string, priority: string) {
@@ -100,30 +91,36 @@ export class DashboardComponent implements OnInit, AfterViewInit {
                 status: status,
                 priority: Priority[priority]
             }
-
             this.messageService.saveApprovedMessages(model)
                 .subscribe(res => {
-                    console.log(res);
-                    this.loadMessages();
+                    this.messageDataSource.loadMessages(this.currentPage, this.pageSize);
+
+                    if (status === 'APPROVED') {
+                        this.messageBoxService.showSuccessMessage(DisplayMessage.APPROVED);
+                    } else {
+                        this.messageBoxService.showSuccessMessage(DisplayMessage.REJECTED);
+                    }
+
                 });
         } else {
-            console.log('Please select the priority');
+            this.messageBoxService.showWarningMessage(DisplayMessage.SELECT_PRIORITY_LEVEL);
         }
     }
 
     loadMessages() {
-        // this.messageDataSource.loadMessages(this.paginator.pageIndex, this.paginator.pageSize);
         this.messageService.getMessages({page: this.currentPage, size: this.pageSize})
             .subscribe((result: MessageResponseModel) => {
                 this.dataSource.data = result.messageDetailsList;
                 setTimeout(() => {
                     this.paginator.pageIndex = this.currentPage;
-                    this.paginator.length = 7;
+                    this.paginator.length = result.totalElements;
                 });
             });
     }
 
     pageChanged(event: PageEvent) {
+        this.currentPage = event.pageIndex;
+        this.pageSize = event.pageSize;
         this.messageDataSource.loadMessages(event.pageIndex, event.pageSize);
     }
 
