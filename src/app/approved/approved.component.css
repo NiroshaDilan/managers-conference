@@ -7,10 +7,15 @@
     font-weight: bold;
 }
 
-.mat-column-detail {
+.mat-column-details {
     width: 150px;
     text-align: center;
     border-right: 1px solid rgba(0,0,0,.12);
+}
+
+.mat-column-details, td {
+    padding-right: 10px;
+    padding-left: 10px !important;
 }
 
 .mat-column-message {
@@ -20,14 +25,23 @@
 }
 
 .mat-column-message, td {
-    text-align: justify;
+    text-align: center;
     padding: 10px 10px 10px 10px;
 }
 
+td {
+    font-size: 15px;
+}
+
 .mat-column-sequence {
-    width: 100px;
+    width: 90px;
     text-align: center;
     border-right: 1px solid rgba(0,0,0,.12);
+}
+
+.mat-column-sequence, td {
+    padding-right: 10px !important;
+    padding-left: 10px;
 }
 .table-container {
     overflow: auto;
@@ -42,4 +56,12 @@ table, th {
 }
 .page-container {
     margin-top: 30px;
+}
+
+.priority-col {
+    padding-right: 1px;
+}
+
+.sequence-col {
+    padding-left: 1px;
 }

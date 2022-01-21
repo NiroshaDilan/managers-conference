@@ -7,10 +7,15 @@
     font-weight: bold;
 }
 
-.mat-column-mobileNo {
+.mat-column-details {
     width: 150px;
     text-align: center;
     border-right: 1px solid rgba(0,0,0,.12);
+}
+
+.mat-column-details, td {
+    padding-right: 10px;
+    padding-left: 10px !important;
 }
 
 .mat-column-message {
@@ -23,10 +28,19 @@
     padding: 10px 10px 10px 10px;
 }
 
+td {
+    font-size: 15px;
+}
+
 .mat-column-action {
     width: 100px;
     text-align: center;
     border-right: 1px solid rgba(0,0,0,.12);
+}
+
+.mat-column-action, td {
+    padding-right: 10px !important;
+    padding-left: 10px;
 }
 .table-container {
     overflow: auto;
@@ -34,7 +48,7 @@
     max-width: 100%;
 }
 .btn-ap {
-    width: 127px;
+    width: 100%;
 }
 
 .btn-dw-group {
@@ -47,4 +61,17 @@ table, th {
 
 button.ngx-dropdown-button {
     max-width: 127px;
+}
+
+.act-btn-l-col {
+    padding-right: 2px;
+}
+
+.act-btn-r-col {
+    padding-left: 1px;
+}
+
+.act-btn-select-r-col {
+    padding-top: 5px;
+    padding-left: 1px;
 }
