@@ -15,7 +15,6 @@ export class MessageService {
     }
 
     getMessages(params): Observable<MessageResponseModel> {
-        // return this.httpClient.get<any>(this.appConfig.API.LOAD_MESSAGES, {params});
         return this.httpClient.post<any>(this.appConfig.API.LOAD_MESSAGES, params);
     }
 
