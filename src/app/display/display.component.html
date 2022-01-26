@@ -1,0 +1,109 @@
+<div class="container pt-md-5">
+    <div class="card-deck mb-3 text-center">
+        <!-- <div class="card mb-6 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Total Messages</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">100</h1>
+            </div>
+        </div>
+        <div class="card mb-6 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Answered Messages</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">20</h1>
+
+            </div>
+        </div> -->
+        <div class="col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon"><i class="fa fa-comment" aria-hidden="true"></i></div>
+                    <p class="card-category">Total Messages</p>
+                    <h3 class="card-title">100</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats"><i class="material-icons">update</i> Just Updated </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon"><i class="fa fa-check" aria-hidden="true"></i></div>
+                    <p class="card-category">Answered Messages</p>
+                    <h3 class="card-title">20</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats"><i class="material-icons">update</i> Just Updated </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="questionnaire-div px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <button type="button" class="btn btn-lg btn-block btn-questionnaire" (click)="openStartQuestionnaire(templateStartQuestinnaire)" data-toggle="modal" data-target="#myModal" id="myInput">Start Questionnaire</button>
+</div>
+
+
+<ng-template #templateStartQuestinnaire>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id='carouselExampleIndicators' class='carousel slide' data-interval="false">
+                        <div class='carousel-inner'>
+                            <div class='carousel-item active'>
+                                <div class='img-size'>
+                                    <div class="card question-card">
+                                        <div class="card-body question-card-body">
+                                            <p class="card-text question-font">{{question?.message}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class='carousel-item' [ngClass]="{active: isClickedFirst}">
+                                <div class='img-size'>
+                                    <div class="card question-card">
+                                        <div class="card-body question-card-body">
+                                            <p class="card-text question-font">{{messageList[0]?.message}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- <div class='carousel-item' [ngClass]="{active: isClickedSecond}">
+                                <div class='img-size'>
+                                    <div class="card question-card">
+                                        <div class="card-body question-card-body">
+                                            <p class="card-text question-font">{{messageList[1]?.message}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <a class='carousel-control-prev' [ngClass]="{disabled: isDisabledprevious}" role='button' (click)="showPreviousQuestion()" data-slide='prev'>
+                            <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                            <span class='sr-only'>Previous</span>
+                        </a>
+                        <a class='carousel-control-next' (click)="showNextQuestion()" [ngClass]="{disabled: isDisabledNext}" role='button' data-slide='next'>
+                            <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                            <span class='sr-only'>Next</span>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-questionnaire" data-dismiss="modal">Mark As Answered</button> -->
+                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modalRef?.hide()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
