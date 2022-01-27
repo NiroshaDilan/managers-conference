@@ -7,6 +7,17 @@
     font-weight: bold;
 }
 
+.mat-column-no {
+    width: 30px;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,.12);
+}
+
+.mat-column-no, td {
+    padding-right: 10px;
+    padding-left: 10px !important;
+}
+
 .mat-column-details {
     width: 150px;
     text-align: center;
@@ -14,8 +25,8 @@
 }
 
 .mat-column-details, td {
-    padding-right: 10px;
-    padding-left: 10px !important;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
 }
 
 .mat-column-message {
@@ -64,4 +75,9 @@ table, th {
 
 .sequence-col {
     padding-left: 1px;
+}
+
+.btn.btn-danger:disabled {
+    background-color: white;
+    color: white;
 }

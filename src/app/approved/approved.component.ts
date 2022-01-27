@@ -32,6 +32,8 @@ import {MessageBoxService} from '../core/services/message-box.service';
 })
 export class ApprovedComponent implements OnInit {
 
+    totalAnswered: number;
+    totalApproved: number;
     messageSubscription: Subscription;
     messageDataSource: ApprovedMessageDatasource;
     prioritySet = new Set<PriorityModel>();
@@ -42,7 +44,7 @@ export class ApprovedComponent implements OnInit {
     pageSize = 3;
     currentPage = 0;
     pageSizeOptions: number[] = [3, 5, 10, 25, 100];
-    displayedColumns: string[] = ['details', 'message', 'sequence'];
+    displayedColumns: string[] = ['no', 'details', 'message', 'sequence'];
     dataSource: MatTableDataSource<ApprovedMessageModel> = new MatTableDataSource();
 
     priorityOptions = ['High', 'Medium', 'Low'];
@@ -110,6 +112,8 @@ export class ApprovedComponent implements OnInit {
                     this.paginator.pageIndex = this.currentPage;
                     this.paginator.length = result.totalElements;
                 });
+                this.totalApproved = result.totalApproved;
+                this.totalAnswered = result.totalAnswered;
             });
     }
 
