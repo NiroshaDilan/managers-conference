@@ -16,9 +16,12 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {SelectDropDownModule} from 'ngx-select-dropdown';
+import {CommonModule} from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
+        CommonModule,
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
@@ -30,7 +33,8 @@ import {SelectDropDownModule} from 'ngx-select-dropdown';
         MatTableModule,
         MatFormFieldModule,
         MatSelectModule,
-        SelectDropDownModule
+        SelectDropDownModule,
+        NgbModule
     ],
   declarations: [
     AppComponent,

@@ -1,22 +1,25 @@
-.header{
+.header {
     /*overflow: hidden;*/
     width: 100%;
 }
+
 .top-title {
     font-family: century gothic;
     font-size: x-large;
     color: #FFFFFF;
     margin-top: 10px;
 }
-.page-titles{
+
+.page-titles {
     padding: 1%;
-    background-image: linear-gradient(to right,#178cec, #ffffff);
+    background-image: linear-gradient(to right, #178cec, #ffffff);
     width: 100%;
     text-align: left;
-    top:0;
-    right:0;
+    top: 0;
+    right: 0;
 }
-.pgtitle{
+
+.pgtitle {
     font-family: "Rubik", sans-serif;
     font-weight: 400;
     color: white;
@@ -25,7 +28,7 @@
     margin-top: 5px;
 }
 
-.logo{
+.logo {
     float: right;
 }
 
@@ -37,6 +40,7 @@
     /* For mobile phones: */
     [class*="page-titles"] {
         padding: 5%;
-        background-image: linear-gradient(#ffffff,#178cec);
+        background-image: linear-gradient(#ffffff, #178cec);
     }
 }
+

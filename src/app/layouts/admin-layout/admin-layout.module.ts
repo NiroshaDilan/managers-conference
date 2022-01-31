@@ -19,6 +19,7 @@ import {SelectDropDownModule} from 'ngx-select-dropdown';
 import { DisplayComponent } from 'app/display/display.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [

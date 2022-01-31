@@ -75,3 +75,11 @@ button.ngx-dropdown-button {
     padding-top: 5px;
     padding-left: 1px;
 }
+
+
+.card .card-header-info .card-icon, .card .card-header-info .card-text,
+.card .card-header-info:not(.card-header-icon):not(.card-header-text),
+.card.bg-info, .card.card-rotate.bg-info .front, .card.card-rotate.bg-info .back {
+
+    background-image: linear-gradient(to right,#178cec, #ffffff) !important;
+}
