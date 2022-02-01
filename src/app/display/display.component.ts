@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, HostBinding, OnInit, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {NgbCarouselConfig, NgbModal, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-bootstrap';
 import {DisplayService} from 'app/core/services/display.service';
@@ -20,7 +20,6 @@ export class DisplayComponent implements OnInit {
         {title: 'Second Slide', short: 'Second Slide Short', src: 'https://www.pngmagic.com/product_images/blue-background-vector.jpg'},
         {title: 'Third Slide', short: 'Third Slide Short', src: 'https://www.pngmagic.com/product_images/blue-background-vector.jpg'}
     ];
-
 
     modalRef?: BsModalRef;
     isDisabledprevious: boolean = false;
@@ -64,7 +63,6 @@ export class DisplayComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
         // this.initDisplay();
 
     }

@@ -12,20 +12,20 @@
 /*    max-width: 960px;*/
 /*}*/
 
-/*.questionnaire-div {*/
-/*    max-width: 700px;*/
-/*}*/
+.questionnaire-div {
+    max-width: 700px;
+}
 
 /*.card-deck .card {*/
 /*    min-width: 220px;*/
 /*}*/
 
-/*.btn-questionnaire {*/
-/*    color: #fff;*/
-/*    background-color: #178cec;*/
-/*    border-color: #178cec;*/
-/*    box-shadow: 0 2px 2px 0 rgb(156 39 176 / 14%), 0 3px 1px -2px rgb(156 39 176 / 20%), 0 1px 5px 0 rgb(156 39 176 / 12%);*/
-/*}*/
+.btn-questionnaire {
+    color: #fff;
+    background-color: #178cec;
+    border-color: #178cec;
+    box-shadow: 0 2px 2px 0 rgb(156 39 176 / 14%), 0 3px 1px -2px rgb(156 39 176 / 20%), 0 1px 5px 0 rgb(156 39 176 / 12%);
+}
 
 /*.card .card-header-info .card-icon,*/
 /*.card .card-header-info .card-text,*/
@@ -118,7 +118,7 @@
 /*    cursor: default;*/
 /*}*/
 
-/*todo newly added*/
+
 ngb-carousel {
     max-width: 700px;
     margin: auto;
@@ -146,7 +146,7 @@ ngb-carousel {
     z-index: -1;
 }
 
-.carousel-item.active{
+.carousel-item.active {
     opacity: 1;
     visibility: visible;
     z-index: 10;
@@ -160,12 +160,27 @@ ngb-carousel {
     z-index: 20;
 }
 
-.carousel-indicators{
+.carousel-indicators {
     z-index: 20;
 }
 
 .carousel-caption {
-    top: 0;
+    /*top: 0;*/
+    top: 50%;
+    bottom: initial;
+    transform: translateY(-50%);
 }
 
+.wrapper {
+    height: auto !important;
+}
+
+.border {
+    background-color: #311141;
+}
+
+.message-text {
+    text-align: center;
+
+}
 

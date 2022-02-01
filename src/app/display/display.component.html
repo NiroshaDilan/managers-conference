@@ -55,6 +55,15 @@
 <!--    </button>-->
 <!--</div>-->
 
+<div class="questionnaire-div px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <button type="button" class="btn btn-lg btn-block btn-questionnaire"
+            (click)="openQuestions(content)"
+            data-toggle="modal"
+            data-target="#myModal"
+            id="myInput">Start Questionnaire
+    </button>
+</div>
+
 <!--<ng-template #templateStartQuestinnaire>-->
 <!--    <div class="modal fade" id="myModal"-->
 <!--         tabindex="-1" role="dialog"-->
@@ -159,14 +168,21 @@
                     <img [src]="image.src" alt="Random first slide">
                 </div>
                 <div class="carousel-caption">
-                    <h3>{{ image.title }}</h3>
-                    <p>It would be good to have the ability to enable-disable the carousel navigation arrows
-                        An example use-case is if wrap options set to false then it should act like below scenario.
-                        If active slide index is 1 then Previous arrow should be disabled.
-                        If active slide index is length of total slides then Next arrow should be disabled.It would be good
-                        to have the ability to enable-disable the carousel navigation arrows
-                        An example use-case is if wrap options set to false then it should act like below scenario.
-                        If active slide index is 1 then Previous arrow should be disabled.
+<!--                    <h3>{{ image.title }}</h3>-->
+                    <p class="message-text">It would be good to have the ability to enable-disable the carousel navigation arrows
+                        It would be good to have the ability to enable-disable the carousel navigation arrows
+<!--                        It would be good to have the ability to enable-disable the carousel navigation arrows-->
+<!--                        It would be good to have the ability to-->
+<!--                        It would be good to have the ability to enable-disable the carousel navigation arrows-->
+<!--                        It would be good to have the ability to-->
+<!--                        It would be good to have the ability to enable-disable the carousel navigation arrows-->
+<!--                        t would be good to have the ability to enable-disable the carousel navigation arrows-->
+<!--                        It would be good to have the ability to enable-disable the carousel navigation arrows-->
+<!--                        It would be good to have the ability to enable-disable the carousel navigation arrows-->
+<!--                        It would be good to have the ability to-->
+<!--                        It would be good to have the ability to enable-disable the carousel navigation arrows-->
+<!--                        It would be good to have the ability to-->
+<!--                        It would be good to have the ability to enable-disable the carousel navigation arrows-->
                     </p>
                 </div>
             </ng-template>
@@ -178,7 +194,7 @@
     <!--  </div>-->
 </ng-template>
 
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openQuestions(content)">Extra large modal</button>
+<!--<button class="btn btn-outline-primary mb-2 mr-2" (click)="openQuestions(content)">Extra large modal</button>-->
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)"
              size="medium"
              color="#fff"
@@ -186,3 +202,4 @@
              [fullScreen]="false">
     <p style="color: white"> Loading... </p>
 </ngx-spinner>
+
