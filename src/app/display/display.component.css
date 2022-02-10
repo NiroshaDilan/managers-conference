@@ -21,6 +21,8 @@
 /*}*/
 
 .btn-questionnaire {
+    width: 115px;
+    height: 115px;
     color: #fff;
     background-color: #178cec;
     border-color: #178cec;
@@ -117,10 +119,35 @@
 /*    pointer-events: none;*/
 /*    cursor: default;*/
 /*}*/
+.btn-p {
+    font-size: 22px;
+    font-weight: 400;
+}
 
+.mat-icon {
+    font-size: 50px;
+}
+
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+
+.qa-img {
+    float: left;
+}
+
+.modal-header {
+    background-color: #c2dfef;;
+}
+
+.modal-body {
+    background-color: #c2dfef;;
+}
 
 ngb-carousel {
-    max-width: 700px;
+    max-width: 1500px;
     margin: auto;
 }
 
@@ -153,11 +180,12 @@ ngb-carousel {
 }
 
 .carousel-control-prev {
-    z-index: 20;
+    pointer-events: none !important;
+    /*z-index: 20;*/
 }
 
 .carousel-control-next {
-    z-index: 20;
+    /*z-index: 20;*/
 }
 
 .carousel-indicators {
@@ -181,6 +209,10 @@ ngb-carousel {
 
 .message-text {
     text-align: center;
-
 }
+
+/*ngb-carousel {*/
+/*    max-width: 1500px !important;*/
+/*    margin: auto;*/
+/*}*/
 

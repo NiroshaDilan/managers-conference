@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit, TemplateRef} from '@angular/core';
+import {Component, HostBinding, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {NgbCarouselConfig, NgbModal, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-bootstrap';
 import {DisplayService} from 'app/core/services/display.service';
@@ -14,11 +14,13 @@ import {NgxSpinnerService} from 'ngx-spinner';
 })
 export class DisplayComponent implements OnInit {
 
-    // images = [1055, 194, 368].map((n) => `https://picsum.photos/id/${n}/900/500`);
+    // imageSrc = 'assets/img/blue-wallpaper-desktop.jpg';
+    imageSrc = 'https://www.pngmagic.com/product_images/blue-background-vector.jpg';
+    wrap = true;
+    // images = [];
     images = [
-        {title: 'First Slide', short: 'First Slide Short', src: 'https://www.pngmagic.com/product_images/blue-background-vector.jpg'},
-        {title: 'Second Slide', short: 'Second Slide Short', src: 'https://www.pngmagic.com/product_images/blue-background-vector.jpg'},
-        {title: 'Third Slide', short: 'Third Slide Short', src: 'https://www.pngmagic.com/product_images/blue-background-vector.jpg'}
+        {title: 'First Slide', short: 'First Slide Short', src: '../assets/blue-wallpaper-desktop.jpg'},
+        {title: 'Second Slide', short: 'Second Slide Short', src: 'https://www.pngmagic.com/product_images/blue-background-vector.jpg'}
     ];
 
     modalRef?: BsModalRef;
@@ -42,7 +44,7 @@ export class DisplayComponent implements OnInit {
     }
 
     openQuestions(content: any) {
-        this.testModal.open(content, {size: 'lg'});
+        this.testModal.open(content, {size: 'xl'});
     }
 
 
@@ -55,15 +57,27 @@ export class DisplayComponent implements OnInit {
     }
 
     next() {
-        console.log('next');
+        if (!this.isDisabledNext) {
+            console.log('next')
+            setTimeout(() => {
+                this.showNextQuestion();
+            }, 100);
+        } else {
+            // this.wrap = false;
+        }
     }
 
     previous() {
-        console.log('previous')
+        if (!this.isDisabledprevious) {
+            console.log('previous')
+            setTimeout(() => {
+                this.showPreviousQuestion();
+            }, 100);
+        }
     }
 
     ngOnInit(): void {
-        // this.initDisplay();
+        this.initDisplay();
 
     }
 
@@ -77,7 +91,7 @@ export class DisplayComponent implements OnInit {
             this.displayService.getQuestions().subscribe(res => {
 
                     if (res) {
-                        if (res.id != 0) {
+                        if (res.id !== 0) {
                             let obj = {
                                 id: res.id,
                                 message: res.message,
@@ -86,6 +100,7 @@ export class DisplayComponent implements OnInit {
                         } else {
                             this.question = this.emptyQuestionObj;
                             this.isDisabledNext = true;
+                            this.wrap = false;
                         }
 
                     } else {
@@ -119,6 +134,7 @@ export class DisplayComponent implements OnInit {
                             } else {
                                 this.question = this.emptyQuestionObj;
                                 this.isDisabledNext = true;
+                                this.wrap = false;
                             }
 
                         } else {
@@ -176,23 +192,22 @@ export class DisplayComponent implements OnInit {
         this.isDisabledNext = false;
     }
 
-    showNextQuestion(id: String) {
+    showNextQuestion() {
         console.log('clicked Next');
 
-        //Inital
+        // Inital
         if (!this.answeredQuestion) {
             console.log('Initial ----------------------------------');
 
             let data = {
                 'id': this.question.id
             }
-            //update API
+            // update API
             this.displayService.updateAnsweredQuestion(data).subscribe(
                 (res: any) => {
-                    console.log(res);
                     if (res) {
-                        if (res.responseCode == '00') {
-                            //store answered Question
+                        if (res.responseCode === '00') {
+                            // store answered Question
                             let objAnswered = {
                                 id: this.question.id,
                                 message: this.question.message,
@@ -201,13 +216,13 @@ export class DisplayComponent implements OnInit {
                             this.answeredQuestion = objAnswered;
                             this.localService.setItem('AnsweredObj', JSON.stringify(this.answeredQuestion));
                             console.log('answered Question' + JSON.stringify(this.answeredQuestion));
-                            //Get API
+                            // Get API
                             this.displayService.getQuestions().subscribe(
                                 (response: any) => {
                                     console.log(response);
 
                                     if (response) {
-                                        if (response.id != 0) {
+                                        if (response.id !== 0) {
                                             let obj = {
                                                 id: response.id,
                                                 message: response.message,
@@ -219,6 +234,7 @@ export class DisplayComponent implements OnInit {
                                             this.question = this.emptyQuestionObj;
                                             this.isDisabledNext = true;
                                             this.isDisabledprevious = false;
+                                            this.wrap = false;
                                         }
 
                                     } else {
@@ -286,6 +302,7 @@ export class DisplayComponent implements OnInit {
                                                 this.question = this.emptyQuestionObj;
                                                 this.isDisabledNext = true;
                                                 this.isDisabledprevious = false;
+                                                this.wrap = false;
                                             }
 
                                         } else {
@@ -337,6 +354,7 @@ export class DisplayComponent implements OnInit {
                                 this.isDisabledprevious = false;
                                 this.answeredQuestion.checkedPrevious = false;
                                 this.localService.setItem('AnsweredObj', JSON.stringify(this.answeredQuestion));
+                                this.wrap = false;
                             }
 
                         } else {

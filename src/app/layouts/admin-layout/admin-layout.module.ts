@@ -20,6 +20,7 @@ import { DisplayComponent } from 'app/display/display.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
     imports: [
@@ -40,7 +41,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         MatTableModule,
         SharedModule,
         NgbModule,
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        MatIconModule
     ],
   declarations: [
     DashboardComponent,
