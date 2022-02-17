@@ -78,6 +78,14 @@
                                                 </ngx-select-dropdown>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-12 act-btn-l-col"
+                                                 style="text-align: end;">
+                                                <button type="button"
+                                                        (click)="submit()"
+                                                        class="btn btn-sm btn-info btn-save">Save</button>
+                                            </div>
+                                        </div>
                                     </td>
                                 </ng-container>
 
@@ -87,6 +95,7 @@
                                 columns: displayedColumns;"
                                     style="height: 150px;"></tr>
                             </table>
+<!--                            <h1 *ngIf="dataSo">No messages to approve</h1>-->
 
                         </ng-container>
                     </form>

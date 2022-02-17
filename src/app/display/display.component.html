@@ -1,11 +1,11 @@
 <div class="container">
-    <div class="row" style="height: 500px;">
+    <div class="row" style="height: 460px;">
         <div class="col-md-12" style="text-align: center; top: 30%">
-            <p class="btn-p">Start Questionnaire</p>
+            <p class="btn-p">Questionnaire</p>
             <button mat-raised-button color="primary"
                     (click)="openQuestions(content)"
                     class="btn-questionnaire">
-                <mat-icon style="padding-right: 60%; padding-bottom: 60%">play_arrow</mat-icon>
+                <mat-icon style="padding-right: 37%; padding-bottom: 36%">play_arrow</mat-icon>
             </button>
         </div>
     </div>
@@ -15,8 +15,11 @@
 <ng-template #content let-modal>
 
     <div class="modal-header">
-        <div class="qa-img">
-            <img src="assets/img/QA.png" height="30px" class="img-responsive">
+        <div class="row">
+            <div class="col-md-12 sms-text">
+                <img src="./assets/img/sms2.png" alt="" height="30px"/>
+                SMS : 076 516 2144
+            </div>
         </div>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
@@ -32,11 +35,17 @@
                 (slide)="onSlide($event)">
             <ng-template ngbSlide *ngFor="let image of images">
                 <div class="wrapper">
-                    <img [src]="imageSrc" alt="Random first slide">
+                    <img
+                            [src]="imageSrc"
+                            alt="Random first slide"
+                            style="max-height: 620px; max-width: 1500px;">
                 </div>
-                <div class="carousel-caption">
-                    <p class="message-text">{{question?.message}}</p>
+                <div>
+                    <div class="carousel-caption">
+                        <p class="message-text">{{question?.message}}</p>
+                    </div>
                 </div>
+
 
             </ng-template>
 

@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {NgbCarouselConfig, NgbModal, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-bootstrap';
 import {DisplayService} from 'app/core/services/display.service';
@@ -14,13 +14,14 @@ import {NgxSpinnerService} from 'ngx-spinner';
 })
 export class DisplayComponent implements OnInit {
 
-    // imageSrc = 'assets/img/blue-wallpaper-desktop.jpg';
-    imageSrc = 'https://www.pngmagic.com/product_images/blue-background-vector.jpg';
+    // imageSrc = 'assets/img/blue-background-vector.jpg';
+    imageSrc = 'assets/img/blue-wall.jpg';
     wrap = true;
     // images = [];
     images = [
-        {title: 'First Slide', short: 'First Slide Short', src: '../assets/blue-wallpaper-desktop.jpg'},
-        {title: 'Second Slide', short: 'Second Slide Short', src: 'https://www.pngmagic.com/product_images/blue-background-vector.jpg'}
+        {title: 'First Slide', short: 'First Slide Short', src: 'assets/img/blue-background-vector.jpg'},
+        {title: 'Second Slide', short: 'Second Slide Short', src: 'assets/img/blue-background-vector.jpg'},
+        {title: 'Second Slide', short: 'Second Slide Short', src: 'assets/img/blue-background-vector.jpg'}
     ];
 
     modalRef?: BsModalRef;
@@ -31,7 +32,8 @@ export class DisplayComponent implements OnInit {
     answeredQuestion: any;
     emptyQuestionObj = {
         id: 0,
-        message: 'Approved Messages are completed',
+        message: 'Please send your questions via \n' +
+            ' SMS : 076 516 2144',
     }
 
     constructor(
@@ -44,7 +46,8 @@ export class DisplayComponent implements OnInit {
     }
 
     openQuestions(content: any) {
-        this.testModal.open(content, {size: 'xl'});
+        this.testModal.open(content, {windowClass: 'my-class'});
+        // this.testModal.open(content, {size: 'xl'});
     }
 
 
@@ -61,7 +64,7 @@ export class DisplayComponent implements OnInit {
             console.log('next')
             setTimeout(() => {
                 this.showNextQuestion();
-            }, 100);
+            }, 50);
         } else {
             // this.wrap = false;
         }
@@ -72,7 +75,7 @@ export class DisplayComponent implements OnInit {
             console.log('previous')
             setTimeout(() => {
                 this.showPreviousQuestion();
-            }, 100);
+            }, 50);
         }
     }
 

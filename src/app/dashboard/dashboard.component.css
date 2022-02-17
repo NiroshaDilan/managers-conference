@@ -8,6 +8,7 @@
 }
 
 .mat-column-details {
+    max-width: 150px;
     width: 150px;
     text-align: center;
     border-right: 1px solid rgba(0,0,0,.12);
@@ -19,6 +20,7 @@
 }
 
 .mat-column-message {
+    max-width: 300px;
     width: 300px;
     text-align: center;
     border-right: 1px solid rgba(0,0,0,.12);
@@ -33,7 +35,8 @@ td {
 }
 
 .mat-column-action {
-    width: 100px;
+    max-width: 140px;
+    width: 140px;
     text-align: center;
     border-right: 1px solid rgba(0,0,0,.12);
 }

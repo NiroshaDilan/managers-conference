@@ -105,6 +105,9 @@ export class ApprovedComponent implements OnInit {
                     }
                 });
                 result.approvedMessageList.map(value => {
+                    if (!value.hrBranch) {
+                        value.hrBranch = 'NOT FOUND';
+                    }
                     value['details'] = value.phoneNo + ' / ' + value.hrBranch;
                 });
                 this.dataSource.data = result.approvedMessageList;
